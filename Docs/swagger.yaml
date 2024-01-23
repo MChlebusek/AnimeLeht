@@ -429,6 +429,18 @@ paths:
                     description: Not Found
             summary: Delete an user by id
             description: Deletes an user of the given id
+    /userAnime:
+        get:
+            tags:
+                - userAnime
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: string
+                    description: get all useranimes
+            summary: gets all entries for users with animes
 components:
     schemas:
         error:

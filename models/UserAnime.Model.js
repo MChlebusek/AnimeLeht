@@ -1,4 +1,4 @@
-const { Sequelize, Animes, Users } = require("../db");
+
 
 module.exports = (sequelize,Sequelize, Anime, User)=> {
     const UserAnime = sequelize.define("userAnime", {
@@ -8,14 +8,14 @@ module.exports = (sequelize,Sequelize, Anime, User)=> {
             autoIncrement : true
         },
         anime_id:{
-            type: Sequelize,INTEGER,
+            type: Sequelize.INTEGER,
             references: {
                 model : Anime,
                 Key: "id"
             }
         },
         user_id:{
-            type:Sequelize,INTEGER,
+            type:Sequelize.INTEGER,
             references: {
                 model : User,
                 Key: "id"

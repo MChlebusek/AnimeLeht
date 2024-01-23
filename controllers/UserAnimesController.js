@@ -1,18 +1,15 @@
 const { db} = require("../db");
-const UserAnimes = db.userAnimes
+const UserAnimes = db.UserAnimes
 const Anime = db.Animes
 exports.getAll = async (req, res)=> {
-    const userAnimes = await userAnimes.findAll({
-        include: {all: true},
-        logging: console.log
-    })
-    console.log(userAnimes)
-    let result = []
-    result = userAnimes.map((lp)=>{
-        return {
-            "animeName":lp.anime.name,
-            "user": `{lp.user.name}`
-        }
-    })
-    res.send(result)
+    let userAnimes
+    try {
+        userAnimes = await UserAnimes.findAll({ attributes: ["id", "anime_Id", "user_Id"] });
+        console.log(userAnimes)
+        res.send(userAnimes); // Send the response as JSON
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+    res.send(userAnimes)
 }

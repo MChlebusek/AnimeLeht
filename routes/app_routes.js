@@ -1,6 +1,7 @@
 const AnimesController = require('../controllers/AnimesController.js')
 const MangasController = require('../controllers/MangasController.js')
 const UsersController = require('../controllers/UsersController.js')
+const UserAnimesController = require('../controllers/UserAnimesController.js')
 
 module.exports =(app) => {
     app.route("/animes")
@@ -24,5 +25,9 @@ module.exports =(app) => {
         .get(UsersController.getById)
         .put(UsersController.updateById)
         .delete(UsersController.deleteById)
+    app.route("/userAnime")
+        .get(UserAnimesController.getAll) 
+
+        
   
 }
